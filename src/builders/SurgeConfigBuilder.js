@@ -383,12 +383,12 @@ export class SurgeConfigBuilder extends BaseConfigBuilder {
             });
         }
 
-        if (this.config.replica) {
+        /*if (this.config.replica) {
             finalConfig.push('\n[Replica]');
             Object.entries(this.config.replica).forEach(([key, value]) => {
                 finalConfig.push(`${key} = ${value}`);
             });
-        }
+        }*/
 
         finalConfig.push('\n[Proxy]');
         finalConfig.push('DIRECT = direct');
