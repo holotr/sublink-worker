@@ -371,7 +371,7 @@ export class SurgeConfigBuilder extends BaseConfigBuilder {
         const rules = generateRules(this.selectedRules, this.customRules);
         let finalConfig = [];
 
-        if (this.subscriptionUrl) {
+        /*if (this.subscriptionUrl) {
             finalConfig.push(`#!MANAGED-CONFIG ${this.subscriptionUrl} interval=43200 strict=false`);
             finalConfig.push('');  // 添加一个空行
         }
@@ -381,7 +381,7 @@ export class SurgeConfigBuilder extends BaseConfigBuilder {
             Object.entries(this.config.general).forEach(([key, value]) => {
                 finalConfig.push(`${key} = ${value}`);
             });
-        }
+        }*
 
         /*if (this.config.replica) {
             finalConfig.push('\n[Replica]');
@@ -390,13 +390,13 @@ export class SurgeConfigBuilder extends BaseConfigBuilder {
             });
         }*/
 
-        finalConfig.push('\n[Proxy]');
-        finalConfig.push('DIRECT = direct');
+        //finalConfig.push('\n[Proxy]');
+        //finalConfig.push('DIRECT = direct');
         if (this.config.proxies) {
             finalConfig.push(...this.getValidProxies());
         }
 
-        finalConfig.push('\n[Proxy Group]');
+        /*finalConfig.push('\n[Proxy Group]');
         if (this.config['proxy-groups']) {
             // Convert object-format groups to Surge string format
             const groupStrings = this.config['proxy-groups'].map(group => {
@@ -408,9 +408,9 @@ export class SurgeConfigBuilder extends BaseConfigBuilder {
                 return null;
             }).filter(g => g != null);
             finalConfig.push(...groupStrings);
-        }
+        }*/
 
-        finalConfig.push('\n[Rule]');
+        /*finalConfig.push('\n[Rule]');
 
         // Rule-Set & Domain Rules & IP Rules:  To reduce DNS leaks and unnecessary DNS queries,
         // domain & non-IP rules must precede IP rules
@@ -464,7 +464,7 @@ export class SurgeConfigBuilder extends BaseConfigBuilder {
             });
         });
 
-        finalConfig.push('FINAL,' + this.t('outboundNames.Fall Back'));
+        finalConfig.push('FINAL,' + this.t('outboundNames.Fall Back'));*/
 
         return finalConfig.join('\n');
     }
