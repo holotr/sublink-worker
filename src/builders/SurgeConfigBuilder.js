@@ -393,7 +393,7 @@ export class SurgeConfigBuilder extends BaseConfigBuilder {
         finalConfig.push('\n[Proxy]');
         finalConfig.push('DIRECT = direct');
         if (this.config.proxies) {
-            finalConfig.push(...this.config.getValidProxies);
+            finalConfig.push(...this.getValidProxies());
         }
 
         finalConfig.push('\n[Proxy Group]');
